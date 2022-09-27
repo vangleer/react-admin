@@ -12,9 +12,9 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
+    "start": "craco start",
+    "build": "craco build",
+    "test": "craco test",
     "eject": "react-scripts eject",
     "lint": "eslint ./src/**/*{.js,.jsx,.ts,.tsx}",
     "lint:fix": "eslint ./src/**/*{.js,.jsx,.ts,.tsx} --fix",
@@ -23,9 +23,7 @@
   "eslintConfig": {
     "extends": [
       "react-app",
-      "react-app/jest",
-      "prettier",
-      "plugin:prettier/recommended"
+      "react-app/jest"
     ],
     "rules": {}
   },
@@ -42,9 +40,10 @@
     ]
   },
   "devDependencies": {
-    "prettier": "^2.7.1",
+    "@craco/craco": "^6.4.5",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-prettier": "^4.2.1",
+    "prettier": "^2.7.1",
     "sass": "^1.55.0"
   }
 }
