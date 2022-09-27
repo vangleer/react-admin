@@ -1,11 +1,11 @@
-import Layout from '@/components/layout'
-import { Button } from 'antd'
+import { useRoutes } from 'react-router-dom'
+import routes from '@/router'
 function App() {
-  return <>
-    <h1>React Admin</h1>
-    <Layout />
-    <Button type="primary">按钮</Button>
-  </>
+  return(
+    <div className='ra-app'>
+      {useRoutes(routes)}
+    </div>
+  )
 }
 
 export default App
