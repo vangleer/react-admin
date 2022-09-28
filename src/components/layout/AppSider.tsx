@@ -1,11 +1,16 @@
-import { MenuFoldOutlined, MenuUnfoldOutlined } from '@ant-design/icons';
-import { Layout, Menu, Button } from 'antd';
-import React from 'react';
-import './index.less'
-
+import { MenuFoldOutlined, MenuUnfoldOutlined } from '@ant-design/icons'
+import { Layout, Button } from 'antd'
+import React from 'react'
+import AppMenu from './AppMenu'
+import { RootState } from '@/store'
+import { useSelector, useDispatch } from 'react-redux'
+import { setAppState } from '@/store/modules/app'
 const { Sider } = Layout;
-export default function AppSider(props) {
-  const { collapsed, setCollapsed, mode, items2 } = props
+export default function AppSider() {
+  const { mode, collapsed } = useSelector((state: RootState) => state.app)
+  const dispatch = useDispatch()
+  const patch = (state) => dispatch(setAppState(state))
+
   return (
     <>
       <div style={{ width: collapsed ? 48 : 208 }} className='ra-layout-sider-ghost'></div>
@@ -13,7 +18,7 @@ export default function AppSider(props) {
         mode !== 'top' && <Sider
           collapsible
           collapsed={collapsed}
-          onCollapse={value => setCollapsed(value)}
+          onCollapse={collapsed => patch({ collapsed })}
           collapsedWidth={48}
           theme="light"
           width={208}
@@ -21,23 +26,7 @@ export default function AppSider(props) {
           className="ra-layout-sider"
           trigger={<Button style={{ width: 48, height: 48 }} type={collapsed ? 'link' : 'text'} icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />} />}
         >
-          {
-            mode === 'side' && <div className='ra-layout-sider-logo'>
-              <a className='ra-logo' href="/">
-                <h1>React Admin</h1>
-              </a>
-            </div>
-          }
-          <Menu
-            mode='inline'
-            defaultSelectedKeys={['1']}
-            defaultOpenKeys={['sub1']}
-            style={{
-              height: '100%',
-              borderRight: 0
-            }}
-            items={items2}
-          />
+          <AppMenu />
         </Sider>
       }
     </>

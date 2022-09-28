@@ -1,9 +1,12 @@
 import { Layout, Menu } from 'antd';
 import React from 'react';
-import './index.less'
+import AppMenu from './AppMenu'
+import { RootState } from '@/store'
+import { useSelector } from 'react-redux'
 
 const { Header } = Layout;
-export default function AppHeader(props) {
+export default function AppHeader() {
+  const { mode, menuList } = useSelector((state: RootState) => state.app)
   return (
     <>
       <Header style={{ height: 48, lineHeight: 48, background: 'transparent' }}>
@@ -15,16 +18,8 @@ export default function AppHeader(props) {
           </a>
         </div>
 
-        {props.mode === 'top' && <div className='ra-layout-header-nav'>
-          <Menu
-            mode="horizontal"
-            defaultSelectedKeys={['1']}
-            defaultOpenKeys={['sub1']}
-            style={{
-              borderBottom: 0
-            }}
-            items={props.items2}
-          />
+        {mode === 'top' && <div className='ra-layout-header-nav'>
+          <AppMenu />
         </div>}
 
         <div className='ra-layout-header-right'>
