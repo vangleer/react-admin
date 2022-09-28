@@ -3,7 +3,6 @@ import { Breadcrumb, Layout, Menu, Button } from 'antd';
 import React, { useState } from 'react';
 import './index.less'
 const { Header, Content, Sider } = Layout;
-
 const items2 = [UserOutlined, LaptopOutlined, NotificationOutlined].map((icon, index) => {
   const key = String(index + 1);
   return {
@@ -23,14 +22,18 @@ const items2 = [UserOutlined, LaptopOutlined, NotificationOutlined].map((icon, i
 const AppLayout = () => {
   const [collapsed, setCollapsed] = useState(false);
   return (
-    <div className='ra-layout ra-layout-mix'>
+    <div className='ra-layout'>
       <Layout style={{ minHeight: '100vh' }}>
+        <Header style={{ height: 48, lineHeight: 48, background: 'transparent' }}>
+        </Header>
         <Header className="ra-layout-header">
           <a className='ra-header-logo' href="/">
             <h1>React Admin</h1>
           </a>
+
         </Header>
         <Layout>
+          <div style={{ width: collapsed ? 48 : 208 }} className='ra-layout-sider-ghost'></div>
           <Sider
             collapsible
             collapsed={collapsed}
@@ -39,7 +42,7 @@ const AppLayout = () => {
             theme="light"
             width={208}
             className="ra-layout-sider"
-            trigger={<Button type="link" icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />} />}
+            trigger={<Button style={{ width: 48, height: 48 }} type={collapsed ? 'link' : 'text'} icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />} />}
           >
             <Menu
               mode="inline"
@@ -48,6 +51,7 @@ const AppLayout = () => {
               style={{
                 height: '100%',
                 borderRight: 0,
+                paddingTop: 48
               }}
               items={items2}
             />
@@ -67,7 +71,12 @@ const AppLayout = () => {
             </div>
 
             <Content className="ra-layout-content">
-              Content
+              {
+                new Array(100).fill('content').map(v =>
+                  <div style={{ margin: '20px' }}>
+                    {v}
+                  </div>)
+              }
             </Content>
           </Layout>
         </Layout>

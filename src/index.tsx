@@ -9,11 +9,11 @@ import { HashRouter } from 'react-router-dom'
 import App from './App'
 
 // 配置主题颜色
-ConfigProvider.config({
-  theme: {
-    primaryColor: '#ff385c'
-  }
-})
+// ConfigProvider.config({
+//   theme: {
+//     primaryColor: '#ff385c'
+//   }
+// })
 
 const root = ReactDOM.createRoot(document.getElementById('root'))
 root.render(

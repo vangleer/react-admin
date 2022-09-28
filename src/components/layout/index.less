@@ -1,9 +1,12 @@
 .ra-layout {
-  --ra-sider-fold-width: 48px;
   height: 100%;
   .ra-layout-header {
+    z-index: 101;
+    position: fixed;
+    top: 0;
     display: flex;
     align-items: center;
+    width: 100%;
     height: 48px;
     padding: 0 16px;
     .ra-header-logo {
@@ -17,8 +20,24 @@
       }
     }
   }
-  .ant-layout-sider {
+  .ra-layout-sider {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    height: 100%;
+    overflow: auto;
+    overflow-x: hidden;
     box-shadow: 2px 0 8px 0 rgb(29 35 41 / 5%);
+    .ant-layout-sider-trigger {
+      border-top: 1px solid rgba(0,0,0,.06);
+      text-align: left;
+    }
+  }
+  .ra-layout-sider-ghost {
+    width: 208px;
+    overflow: hidden;
+    transition: background-color 0.3s ease 0s, width 0.3s ease 0s, width 0.3s cubic-bezier(0.645, 0.045, 0.355, 1) 0s;
   }
   .ra-layout-breadcrumb {
     background-color: #fff;
@@ -57,12 +76,5 @@
       }
     }
   }
-  .ant-layout-sider-trigger {
-    border-top: 1px solid rgba(0,0,0,.06);
-    text-align: left;
-    .ant-btn-link {
-      width: var(--ra-sider-fold-width);
-      height: var(--ra-sider-fold-width);
-    }
-  }
+ 
 }
