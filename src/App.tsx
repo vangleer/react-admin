@@ -1,9 +1,9 @@
 import { useRoutes } from 'react-router-dom'
-import routes from '@/router'
+import ruoter from '@/router'
 function App() {
-  return(
+  return (
     <div className='ra-app'>
-      {useRoutes(routes)}
+      {useRoutes(ruoter)}
     </div>
   )
 }
