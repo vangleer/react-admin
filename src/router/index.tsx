@@ -1,5 +1,5 @@
 import React, { lazy, Suspense } from 'react'
-import { Navigate, RouteObject, Link } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { LaptopOutlined, NotificationOutlined } from '@ant-design/icons';
 import Layout from '@/components/layout/index'
 

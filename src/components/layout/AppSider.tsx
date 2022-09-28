@@ -7,22 +7,22 @@ import { useSelector, useDispatch } from 'react-redux'
 import { setAppState } from '@/store/modules/app'
 const { Sider } = Layout;
 export default function AppSider() {
-  const { mode, collapsed } = useSelector((state: RootState) => state.app)
+  const { mode, collapsed, sideWidth, headerHeight } = useSelector((state: RootState) => state.app)
   const dispatch = useDispatch()
   const patch = (state) => dispatch(setAppState(state))
 
   return (
     <>
-      <div style={{ width: collapsed ? 48 : 208 }} className='ra-layout-sider-ghost'></div>
+      <div style={{ width: collapsed ? headerHeight : sideWidth }} className='ra-layout-sider-ghost'></div>
       {
         mode !== 'top' && <Sider
           collapsible
           collapsed={collapsed}
           onCollapse={collapsed => patch({ collapsed })}
-          collapsedWidth={48}
+          collapsedWidth={headerHeight}
           theme="light"
-          width={208}
-          style={{ paddingTop: 48 }}
+          width={sideWidth}
+          style={{ paddingTop: headerHeight }}
           className="ra-layout-sider"
           trigger={<Button style={{ width: 48, height: 48 }} type={collapsed ? 'link' : 'text'} icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />} />}
         >

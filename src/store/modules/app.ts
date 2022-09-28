@@ -1,15 +1,19 @@
 import { createSlice } from '@reduxjs/toolkit'
 import type { PayloadAction } from '@reduxjs/toolkit'
 export interface AppState {
-  mode?: 'mix' | 'top'
-  collapsed?: boolean,
-  menuList?: any[]
+  mode: 'mix' | 'top'
+  collapsed: boolean
+  menuList: any[]
+  sideWidth: number
+  headerHeight: number
 }
 
-const initialState: AppState = {
+const initialState: Partial<AppState> = {
   mode: 'mix',
   collapsed: false,
-  menuList: []
+  menuList: [],
+  sideWidth: 208,
+  headerHeight: 48
 }
 
 export const appSlice = createSlice({

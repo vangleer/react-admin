@@ -5,9 +5,9 @@ import { RootState } from '@/store'
 import { useSelector } from 'react-redux'
 
 export default function AppMenu() {
-  const { mode } = useSelector((state: RootState) => state.app)
+  const { mode, headerHeight } = useSelector((state: RootState) => state.app)
   const menuMode = mode === 'top' ? 'horizontal' : 'inline'
-  const style = mode === 'top' ? { borderBottom: 0 } : {
+  const style = mode === 'top' ? { borderBottom: 0, height: headerHeight, lineHeight: headerHeight + 'px' } : {
     height: '100%',
     borderRight: 0
   }
