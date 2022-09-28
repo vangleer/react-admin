@@ -6,6 +6,7 @@ export const config = {
     navTheme: 'dark',
     primaryColor: '#1890ff',
     headerHeight: 48,
-    siderWidth: 208
+    siderWidth: 208,
+    mode: ''
   }
 }

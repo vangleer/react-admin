@@ -9,15 +9,27 @@
     width: 100%;
     height: 48px;
     padding: 0 16px;
-    .ra-header-logo {
-      h1 {
-        height: 32px;
-        margin: 0 0 0 12px;
-        color: var(--ant-primary-color);
-        font-weight: 600;
-        font-size: 18px;
-        line-height: 32px;
+    line-height: 48px;
+    &-left {
+      .ra-logo {
+        h1 {
+          height: 32px;
+          margin: 0 0 0 12px;
+          color: var(--ant-primary-color);
+          font-weight: 600;
+          font-size: 18px;
+          line-height: 32px;
+        }
       }
+    }
+    &-nav {
+      flex: 1;
+      .ant-menu {
+        background: 0 0;
+      }
+    }
+    &-right {
+      min-width: 200px;
     }
   }
   .ra-layout-sider {
@@ -69,12 +81,34 @@
 
 .ra-layout-mix {
   .ra-layout-header {
+    color: #fff;
     box-shadow: 0 1px 4px rgb(0 21 41 / 8%);
-    .ra-header-logo {
+    justify-content: space-between;
+    .ra-logo {
       h1 {
         color: #fff;
       }
     }
   }
- 
+}
+
+.ra-layout-top {
+  .ra-layout-header {
+    background: #fff;
+    box-shadow: 0 1px 4px 0 rgb(0 21 41 / 12%);
+    .ra-logo {
+      h1 {
+        color: rgba(0,0,0,.85);
+      }
+    }
+
+    &-left {
+      min-width: 192px;
+    }
+  }
+
+  .ant-menu {
+    background: 0 0;
+    color: rgba(0,0,0,.85);
+  }
 }
