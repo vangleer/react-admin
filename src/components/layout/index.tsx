@@ -4,7 +4,6 @@ import React, { useState } from 'react';
 import './index.less'
 
 const layoutType = [
-  // { type: 'side', title: '侧边菜单布局' },
   { type: 'top', title: '顶部菜单布局' },
   { type: 'mix', title: '混合菜单布局' }
 ]
@@ -72,6 +71,13 @@ const AppLayout = () => {
               className="ra-layout-sider"
               trigger={<Button style={{ width: 48, height: 48 }} type={collapsed ? 'link' : 'text'} icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />} />}
             >
+              {
+                mode === 'side' && <div className='ra-layout-sider-logo'>
+                  <a className='ra-logo' href="/">
+                    <h1>React Admin</h1>
+                  </a>
+                </div>
+              }
               <Menu
                 mode='inline'
                 defaultSelectedKeys={['1']}
