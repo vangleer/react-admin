@@ -1,8 +1,9 @@
-const path = require('path')
-const CracoLessPlugin = require('craco-less')
+import path from 'path'
+import CracoLessPlugin from 'craco-less'
 const resolve = pathname => path.resolve(__dirname, pathname)
 
-module.exports = {
+
+export default {
   // less
   plugins: [
     {
@@ -10,7 +11,7 @@ module.exports = {
       options: {
         lessLoaderOptions: {
           lessOptions: {
-            modifyVars: {  },
+            modifyVars: {},
             javascriptEnabled: true,
           },
         },
