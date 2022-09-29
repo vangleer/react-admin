@@ -27,11 +27,6 @@ const AppLayout = () => {
             <AppBreadcrumb />
             <Content className="ra-layout-content">
               <Outlet />
-              {
-                new Array(100).fill('content').map(v => (
-                  <div style={{ margin: 20 }}>{v}</div>
-                ))
-              }
             </Content>
           </Layout>
         </Layout>
