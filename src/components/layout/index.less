@@ -179,17 +179,31 @@
       left: 0;
     }
     &::after {
-      background-color: #fff;
+      background-color: #001529;
       width: 100%;
       height: 25%;
     }
   }
   .ra-settings-layout-block-mix {
     &::before {
+      background-color: #fff;
+      width: 33%;
+      height: 100%;
+    }
+    &::after {
+      z-index: 1;
+      background-color: #001529;
+    }
+  }
+  .ra-settings-layout-block-side {
+    &::before {
       z-index: 1;
       background-color: #001529;
       width: 33%;
       height: 100%;
+    }
+    &::after {
+      background-color: #fff;
     }
   }
 }
