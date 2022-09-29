@@ -1,12 +1,14 @@
 import { createSlice } from '@reduxjs/toolkit'
 import type { PayloadAction } from '@reduxjs/toolkit'
-
+import { ConfigProvider } from 'antd'
+import { colors, layouts } from '@/config'
 export type RoutePathType = {
   path: string,
   label: string
 }
 export interface AppState {
   mode: 'mix' | 'top'
+  primaryColor: string,
   collapsed: boolean
   menuList: any[]
   sideWidth: number
@@ -15,7 +17,8 @@ export interface AppState {
 }
 
 const initialState: Partial<AppState> = {
-  mode: 'mix',
+  mode: layouts[0].value,
+  primaryColor: colors[0].value,
   collapsed: false,
   menuList: [],
   sideWidth: 208,
@@ -30,6 +33,16 @@ export const appSlice = createSlice({
     setAppState(state, action: PayloadAction<AppState>) {
       Object.keys(action.payload).forEach(key => {
         state[key] = action.payload[key]
+
+        if (key === 'primaryColor') {
+          // 配置主题颜色
+          ConfigProvider.config({
+            theme: {
+              primaryColor: state[key]
+            }
+          })
+        }
+
       })
     }
   }

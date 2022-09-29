@@ -1,9 +1,9 @@
-import { Layout, Menu } from 'antd';
+import { Layout } from 'antd'
 import React from 'react';
 import AppMenu from './AppMenu'
 import { RootState } from '@/store'
 import { useSelector } from 'react-redux'
-
+import AppSettings from './AppSettings'
 const { Header } = Layout;
 export default function AppHeader() {
   const { mode, headerHeight } = useSelector((state: RootState) => state.app)
@@ -21,11 +21,9 @@ export default function AppHeader() {
             <h1>React Admin</h1>
           </a>
         </div>
-
         {mode === 'top' && <AppMenu />}
-
         <div className='ra-layout-header-right'>
-          right
+          <AppSettings />
         </div>
       </Header>
     </>

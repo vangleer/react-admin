@@ -1,12 +1,31 @@
-export const config = {
-  layout: {
-    name: 'React Admin',
-    logo: 'https://preview.pro.ant.design/static/logo.f0355d39.svg',
-    // copy from pro site
-    navTheme: 'dark',
-    primaryColor: '#1890ff',
-    headerHeight: 48,
-    siderWidth: 208,
-    mode: ''
-  }
+export type ColorsType = {
+  value: string
+  label: string
 }
+export const colors: ColorsType[] = [
+  {
+    value: '#1890ff',
+    label: '蓝色'
+  },
+  {
+    value: 'rgb(245, 34, 45)',
+    label: '红色'
+  },
+  {
+    value: 'rgb(250, 84, 28)',
+    label: '橘黄色'
+  },
+  {
+    value: 'rgb(19, 194, 194)',
+    label: '青色'
+  }
+]
+
+export type LayoutsType = {
+  value: 'top' | 'mix'
+  label: string
+}
+export const layouts: LayoutsType[] = [
+  { value: 'mix', label: '混合菜单布局' },
+  { value: 'top', label: '顶部菜单布局' }
+]
