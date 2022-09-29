@@ -9,7 +9,7 @@ export default function AppHeader() {
   const { mode, headerHeight } = useSelector((state: RootState) => state.app)
 
   const style = {
-    height: headerHeight, lineHeight: headerHeight
+    height: headerHeight, lineHeight: headerHeight + 'px'
   }
   return (
     <>
