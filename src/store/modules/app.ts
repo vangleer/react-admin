@@ -1,13 +1,13 @@
 import { createSlice } from '@reduxjs/toolkit'
 import type { PayloadAction } from '@reduxjs/toolkit'
 import { ConfigProvider } from 'antd'
-import { colors, layouts } from '@/config'
+import { colors, layouts, LayoutModeType } from '@/config'
 export type RoutePathType = {
   path: string,
   label: string
 }
 export interface AppState {
-  mode: 'mix' | 'top'
+  mode: LayoutModeType
   primaryColor: string,
   collapsed: boolean
   menuList: any[]

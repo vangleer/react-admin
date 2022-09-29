@@ -19,8 +19,9 @@ export default function AppMenu() {
   return defaultKeys.length && <div className='ra-layout-header-nav'>
     <Menu
       mode={menuMode}
+      theme={mode === 'side' ? 'dark' : 'light'}
       defaultSelectedKeys={defaultKeys}
-      defaultOpenKeys={defaultKeys.slice(0, -1)}
+      defaultOpenKeys={mode === 'top' ? [] : defaultKeys.slice(0, -1)}
       style={style}
       items={menuList}
       onClick={handleClick}

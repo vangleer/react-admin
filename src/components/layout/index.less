@@ -10,12 +10,11 @@
     padding: 0 16px;
     &-nav {
       flex: 1;
-      .ant-menu {
-        background: 0 0;
-      }
     }
   }
   .ra-logo {
+    display: flex;
+    align-items: center;
     h1 {
       height: 32px;
       margin: 0 0 0 12px;
@@ -23,6 +22,10 @@
       font-weight: 600;
       font-size: 18px;
       line-height: 32px;
+    }
+    .ra-logo-icon {
+      width: 32px;
+      height: 32px;
     }
   }
   .ra-layout-sider {
@@ -37,20 +40,12 @@
     .ant-layout-sider-trigger {
       border-top: 1px solid rgba(0,0,0,.06);
       text-align: left;
-    }
-    .ra-layout-sider-logo {
-      position: relative;
-      display: flex;
-      align-items: center;
-      padding: 16px;
-      cursor: pointer;
-      transition: padding .3s cubic-bezier(.645,.045,.355,1);
+      background-color: transparent;
     }
   }
   .ra-layout-sider-ghost {
-    width: 208px;
     overflow: hidden;
-    transition: background-color 0.3s ease 0s, width 0.3s ease 0s, width 0.3s cubic-bezier(0.645, 0.045, 0.355, 1) 0s;
+    transition: all .2s;
   }
   .ra-layout-breadcrumb {
     background-color: #fff;
@@ -77,6 +72,32 @@
     background-color: #fff;
     margin: 24px;
     padding: 24px;
+  }
+}
+
+.ra-layout-side {
+  
+  .ra-layout-header {
+    position: relative;
+    justify-content: space-between;
+    background-color: #fff;
+    box-shadow: 0 1px 4px 0 rgb(0 21 41 / 12%);
+  }
+  .ra-layout-sider {
+    background: #001529;
+  }
+  .ra-logo {
+    padding: 16px;
+    transition: all .2s;
+    h1 {
+      color: #fff;
+    }
+  }
+  
+  &.is-collapsed {
+    .ra-logo {
+      padding: 16px 8px;
+    }
   }
 }
 

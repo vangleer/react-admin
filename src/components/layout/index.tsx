@@ -14,17 +14,24 @@ const { Content } = Layout;
 
 const AppLayout = () => {
 
-  const { mode } = useSelector((state: RootState) => state.app)
+  const { mode, collapsed } = useSelector((state: RootState) => state.app)
+  const className = `ra-layout ra-layout-${mode}${collapsed ? ' is-collapsed' : ''}`
   return (
-    <div className={`ra-layout ra-layout-${mode}`}>
+    <div className={className}>
       <Layout style={{ minHeight: '100vh' }}>
-        <AppHeader />
+        {mode !== 'side' && <AppHeader />}
         <Layout>
           <AppSider />
           <Layout>
+            {mode === 'side' && <AppHeader />}
             <AppBreadcrumb />
             <Content className="ra-layout-content">
               <Outlet />
+              {
+                new Array(100).fill('content').map(v => (
+                  <div style={{ margin: 20 }}>{v}</div>
+                ))
+              }
             </Content>
           </Layout>
         </Layout>

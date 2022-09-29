@@ -119,6 +119,6 @@ export const findRoutePath = (pathname): RoutePathType[] => {
   return arr
 }
 
-export const menuList = mapRoutes(routes)
+export const menuList = mapRoutes(mainRoutes)
 
 export default generateRouter(routes)

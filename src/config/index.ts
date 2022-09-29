@@ -1,3 +1,4 @@
+export type LayoutModeType = 'top' | 'mix' | 'side'
 export type ColorsType = {
   value: string
   label: string
@@ -22,10 +23,11 @@ export const colors: ColorsType[] = [
 ]
 
 export type LayoutsType = {
-  value: 'top' | 'mix'
+  value: LayoutModeType
   label: string
 }
 export const layouts: LayoutsType[] = [
+  { value: 'side', label: '侧边菜单布局' },
   { value: 'mix', label: '混合菜单布局' },
   { value: 'top', label: '顶部菜单布局' }
 ]
