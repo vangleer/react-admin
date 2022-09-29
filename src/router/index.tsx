@@ -1,8 +1,8 @@
 import React, { lazy, Suspense } from 'react'
-import { Link } from 'react-router-dom'
 import { LaptopOutlined, NotificationOutlined } from '@ant-design/icons';
 import Layout from '@/components/layout/index'
-
+import { Spin } from 'antd';
+import { RoutePathType } from '@/store/modules/app';
 export const mainRoutes = [
   {
     path: '/',
@@ -14,6 +14,7 @@ export const mainRoutes = [
     children: [
       {
         path: '/home',
+        index: true,
         component: lazy(() => import('@/views/home')),
         meta: {
           title: 'Home'
@@ -31,6 +32,7 @@ export const mainRoutes = [
     children: [
       {
         path: '/goods/info',
+        index: true,
         component: lazy(() => import('@/views/goods/Info')),
         meta: {
           title: '商品详情'
@@ -65,7 +67,7 @@ function mapRoutes(routes) {
     return {
       key: key,
       icon: item.meta?.icon && <item.meta.icon />,
-      label: <Link to={item.path}>{item.meta?.title}</Link>,
+      label: item.meta?.title,
       children: mapRoutes(item.children)
     };
   })
@@ -79,9 +81,7 @@ const generateRouter = (routers: any) => {
     if (item.children) {
       item.children = generateRouter(item.children)
     }
-    item.element = <Suspense fallback={
-      <div>加载中...</div>
-    }>
+    item.element = <Suspense fallback={<Spin />}>
       {/* 把懒加载的异步路由变成组件装载进去 */}
       <item.component />
     </Suspense>
@@ -89,6 +89,35 @@ const generateRouter = (routers: any) => {
   })
 }
 
+export const findRoutePath = (pathname): RoutePathType[] => {
+  let arr: RoutePathType[] = []
+  const findRoute = (routes, route?) => {
+    if (route) {
+      arr = [{ path: route.key, label: route.label }]
+      if (route.key === pathname) return true
+    }
+    if (!routes) return
+    for (let i = 0; i < routes.length; i++) {
+      const item = routes[i]
+      arr.push({
+        path: item.key,
+        label: item.label
+      })
+      if (item.key === pathname) {
+        return true
+      } else {
+        arr.pop()
+      }
+      if (item.children) findRoute(item.children)
+    }
+  }
+  for (let i = 0; i < menuList.length; i++) {
+    let route = menuList[i]
+    const flag = findRoute(route.children, route)
+    if (flag) return arr
+  }
+  return arr
+}
 
 export const menuList = mapRoutes(routes)
 
