@@ -21,11 +21,6 @@ export default {
   webpack: {
     alias: {
       "@": resolve("src")
-    },
-    configure: {
-      output: {
-        publicPath: './'
-      }
     }
   },
   devServer: {
