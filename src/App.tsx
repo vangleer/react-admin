@@ -9,15 +9,9 @@ function App() {
   useEffect(() => {
     const routePath = findRoutePath(location.pathname)
     dispatch(setAppState({ routePath } as any))
-    return () => {
-
-    }
+    return () => {}
   }, [location.pathname, dispatch])
-  return (
-    <div className='ra-app'>
-      {useRoutes(ruoter)}
-    </div>
-  )
+  return <div className="ra-app">{useRoutes(ruoter)}</div>
 }
 
 export default App

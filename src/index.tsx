@@ -19,5 +19,4 @@ root.render(
       </HashRouter>
     </ConfigProvider>
   </Provider>
-
 )

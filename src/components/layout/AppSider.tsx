@@ -6,7 +6,7 @@ import { RootState } from '@/store'
 import { useSelector, useDispatch } from 'react-redux'
 import { setAppState } from '@/store/modules/app'
 import AppLogo from './AppLogo'
-const { Sider } = Layout;
+const { Sider } = Layout
 export default function AppSider() {
   const { mode, collapsed, sideWidth, headerHeight } = useSelector((state: RootState) => state.app)
   const dispatch = useDispatch()
@@ -14,23 +14,32 @@ export default function AppSider() {
 
   return (
     <>
-      <div style={{ width: collapsed ? headerHeight : sideWidth }} className='ra-layout-sider-ghost'></div>
-      {
-        mode !== 'top' && <Sider
+      <div
+        style={{ width: collapsed ? headerHeight : sideWidth }}
+        className="ra-layout-sider-ghost"
+      ></div>
+      {mode !== 'top' && (
+        <Sider
           collapsible
           collapsed={collapsed}
-          onCollapse={collapsed => patch({ collapsed })}
+          onCollapse={(collapsed) => patch({ collapsed })}
           collapsedWidth={headerHeight}
           theme="light"
           width={sideWidth}
           style={{ paddingTop: mode === 'side' ? 0 : headerHeight }}
           className="ra-layout-sider"
-          trigger={<Button style={{ width: 48, height: 48, color: mode === 'side' ? '#fff' : '' }} type={collapsed ? 'link' : 'text'} icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />} />}
+          trigger={
+            <Button
+              style={{ width: 48, height: 48, color: mode === 'side' ? '#fff' : '' }}
+              type={collapsed ? 'link' : 'text'}
+              icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
+            />
+          }
         >
           {mode === 'side' && <AppLogo />}
           <AppMenu />
         </Sider>
-      }
+      )}
     </>
   )
 }

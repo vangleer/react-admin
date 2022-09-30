@@ -10,10 +10,9 @@ import './index.less'
 import { RootState } from '@/store'
 import { useSelector } from 'react-redux'
 
-const { Content } = Layout;
+const { Content } = Layout
 
 const AppLayout = () => {
-
   const { mode, collapsed } = useSelector((state: RootState) => state.app)
   const className = `ra-layout ra-layout-${mode}${collapsed ? ' is-collapsed' : ''}`
   return (
@@ -33,6 +32,6 @@ const AppLayout = () => {
       </Layout>
     </div>
   )
-};
+}
 
-export default AppLayout;
+export default AppLayout

@@ -1,8 +1,8 @@
 import React, { lazy, Suspense } from 'react'
-import { LaptopOutlined, NotificationOutlined } from '@ant-design/icons';
+import { LaptopOutlined, NotificationOutlined } from '@ant-design/icons'
 import Layout from '@/components/layout/index'
-import { Spin } from 'antd';
-import { RoutePathType } from '@/store/modules/app';
+import { Spin } from 'antd'
+import { RoutePathType } from '@/store/modules/app'
 export const mainRoutes = [
   {
     path: '/',
@@ -31,8 +31,8 @@ export const mainRoutes = [
     },
     children: [
       {
-        path: '/goods/info',
         index: true,
+        path: '/goods/info',
         component: lazy(() => import('@/views/goods/Info')),
         meta: {
           title: '商品详情'
@@ -52,7 +52,7 @@ const routes = [
   ...mainRoutes,
   {
     path: '/login',
-    component: lazy(() => import('@/views/Login'))
+    component: lazy(() => import('@/views/login/index'))
   },
   {
     path: '*',
@@ -69,11 +69,9 @@ function mapRoutes(routes) {
       icon: item.meta?.icon && <item.meta.icon />,
       label: item.meta?.title,
       children: mapRoutes(item.children)
-    };
+    }
   })
 }
-
-
 
 // 路由处理方式
 const generateRouter = (routers: any) => {
@@ -81,10 +79,12 @@ const generateRouter = (routers: any) => {
     if (item.children) {
       item.children = generateRouter(item.children)
     }
-    item.element = <Suspense fallback={<Spin />}>
-      {/* 把懒加载的异步路由变成组件装载进去 */}
-      <item.component />
-    </Suspense>
+    item.element = (
+      <Suspense fallback={<Spin />}>
+        {/* 把懒加载的异步路由变成组件装载进去 */}
+        <item.component />
+      </Suspense>
+    )
     return item
   })
 }

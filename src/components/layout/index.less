@@ -53,14 +53,14 @@
     overflow-x: hidden;
     box-shadow: 2px 0 8px 0 rgb(29 35 41 / 5%);
     .ant-layout-sider-trigger {
-      border-top: 1px solid rgba(0,0,0,.06);
+      border-top: 1px solid rgba(0, 0, 0, 0.06);
       text-align: left;
       background-color: transparent;
     }
   }
   .ra-layout-sider-ghost {
     overflow: hidden;
-    transition: all .2s;
+    transition: all 0.2s;
   }
   .ra-layout-breadcrumb {
     background-color: #fff;
@@ -72,7 +72,7 @@
       &-title {
         margin-right: 12px;
         margin-bottom: 0;
-        color: rgba(0,0,0,.85);
+        color: rgba(0, 0, 0, 0.85);
         font-weight: 600;
         font-size: 20px;
         line-height: 32px;
@@ -91,7 +91,6 @@
 }
 
 .ra-layout-side {
-  
   .ra-layout-header {
     position: relative;
     justify-content: space-between;
@@ -103,12 +102,12 @@
   }
   .ra-logo {
     padding: 16px;
-    transition: all .2s;
+    transition: all 0.2s;
     h1 {
       color: #fff;
     }
   }
-  
+
   &.is-collapsed {
     .ra-logo {
       padding: 16px 8px;
@@ -135,7 +134,7 @@
     box-shadow: 0 1px 4px 0 rgb(0 21 41 / 12%);
     .ra-logo {
       h1 {
-        color: rgba(0,0,0,.85);
+        color: rgba(0, 0, 0, 0.85);
       }
     }
 
@@ -146,7 +145,7 @@
 
   .ant-menu {
     background: 0 0;
-    color: rgba(0,0,0,.85);
+    color: rgba(0, 0, 0, 0.85);
   }
 }
 .ra-settings-content {
@@ -168,7 +167,7 @@
     border-radius: 2px;
     cursor: pointer;
   }
-  [class^=ra-settings-layout-block] {
+  [class^='ra-settings-layout-block'] {
     position: relative;
     width: 44px;
     height: 36px;
@@ -178,7 +177,7 @@
     border-radius: 4px;
     box-shadow: 0 1px 2.5px 0 rgb(0 0 0 / 18%);
     cursor: pointer;
-    
+
     .ra-check-icon {
       position: absolute;
       right: 6px;
@@ -187,8 +186,9 @@
       font-size: 14px;
       pointer-events: none;
     }
-    &::before, &::after {
-      content: "";
+    &::before,
+    &::after {
+      content: '';
       position: absolute;
       top: 0;
       left: 0;
@@ -222,4 +222,3 @@
     }
   }
 }
-

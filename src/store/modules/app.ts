@@ -3,16 +3,16 @@ import type { PayloadAction } from '@reduxjs/toolkit'
 import { ConfigProvider } from 'antd'
 import { colors, layouts, LayoutModeType } from '@/config'
 export type RoutePathType = {
-  path: string,
+  path: string
   label: string
 }
 export interface AppState {
   mode: LayoutModeType
-  primaryColor: string,
+  primaryColor: string
   collapsed: boolean
   menuList: any[]
   sideWidth: number
-  headerHeight: number,
+  headerHeight: number
   routePath: RoutePathType[]
 }
 
@@ -31,7 +31,7 @@ export const appSlice = createSlice({
   initialState,
   reducers: {
     setAppState(state, action: PayloadAction<AppState>) {
-      Object.keys(action.payload).forEach(key => {
+      Object.keys(action.payload).forEach((key) => {
         state[key] = action.payload[key]
 
         if (key === 'primaryColor') {
@@ -42,7 +42,6 @@ export const appSlice = createSlice({
             }
           })
         }
-
       })
     }
   }

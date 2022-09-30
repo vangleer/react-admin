@@ -12,7 +12,8 @@ export default function AppHeader() {
   const { mode, headerHeight } = useSelector((state: RootState) => state.app)
 
   const style = {
-    height: headerHeight, lineHeight: headerHeight + 'px'
+    height: headerHeight,
+    lineHeight: headerHeight + 'px'
   }
   const navigate = useNavigate()
   const handleClick = ({ key }) => {
@@ -21,26 +22,27 @@ export default function AppHeader() {
         return navigate('/login', { replace: true })
     }
   }
-  const menu = <Menu onClick={handleClick} items={[
-    {
-      label: '退出登录',
-      key: 'logout',
-    }
-  ]} />
+  const menu = (
+    <Menu
+      onClick={handleClick}
+      items={[
+        {
+          label: '退出登录',
+          key: 'logout'
+        }
+      ]}
+    />
+  )
   return (
     <>
-      {
-        mode !== 'side' && <Header style={{ ...style, background: 'transparent' }} />
-      }
+      {mode !== 'side' && <Header style={{ ...style, background: 'transparent' }} />}
       <Header className="ra-layout-header" style={style}>
-        <div className='ra-layout-header-left'>
-          {mode !== 'side' && <AppLogo />}
-        </div>
+        <div className="ra-layout-header-left">{mode !== 'side' && <AppLogo />}</div>
         {mode === 'top' && <AppMenu />}
-        <div className='ra-layout-header-right'>
+        <div className="ra-layout-header-right">
           <AppSettings />
           <Dropdown overlay={menu}>
-            <a className='ra-user-box' onClick={e => e.preventDefault()}>
+            <a className="ra-user-box" onClick={(e) => e.preventDefault()}>
               <img src={UserImg} />
               <span>Admin</span>
             </a>
