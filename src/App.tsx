@@ -12,7 +12,7 @@ function App() {
     return () => {
 
     }
-  }, [location.pathname])
+  }, [location.pathname, dispatch])
   return (
     <div className='ra-app'>
       {useRoutes(ruoter)}

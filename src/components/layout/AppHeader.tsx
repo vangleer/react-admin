@@ -6,7 +6,7 @@ import { RootState } from '@/store'
 import { useSelector } from 'react-redux'
 import AppSettings from './AppSettings'
 import AppLogo from './AppLogo'
-import UserImg from '../../assets/images/user.png'
+import UserImg from '@/assets/images/user.png'
 const { Header } = Layout
 export default function AppHeader() {
   const { mode, headerHeight } = useSelector((state: RootState) => state.app)
@@ -18,7 +18,7 @@ export default function AppHeader() {
   const handleClick = ({ key }) => {
     switch (key) {
       case 'logout':
-        return navigate('/login', { replace: false })
+        return navigate('/login', { replace: true })
     }
   }
   const menu = <Menu onClick={handleClick} items={[
