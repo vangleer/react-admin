@@ -3,14 +3,13 @@ import { Button, Drawer } from 'antd'
 import { SettingOutlined, CheckOutlined } from '@ant-design/icons'
 
 import { RootState } from '@/store'
-import { useSelector, useDispatch } from 'react-redux'
-import { setAppState } from '@/store/modules/app'
+import { useSelector } from 'react-redux'
+import { usePatch } from '@/store/modules/app'
 import { colors, layouts } from '@/config'
 
 export default function AppSettings() {
-  const dispatch = useDispatch()
   const { mode, primaryColor } = useSelector((state: RootState) => state.app)
-  const patch = (state) => dispatch(setAppState(state))
+  const patch = usePatch()
   const [open, setOpen] = useState(false)
   const onClose = () => {
     setOpen(false)

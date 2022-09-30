@@ -3,14 +3,15 @@ import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import AppMenu from './AppMenu'
 import { RootState } from '@/store'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import AppSettings from './AppSettings'
 import AppLogo from './AppLogo'
 import UserImg from '@/assets/images/user.png'
+import { logout } from '@/store/modules/app'
 const { Header } = Layout
 export default function AppHeader() {
-  const { mode, headerHeight } = useSelector((state: RootState) => state.app)
-
+  const { mode, headerHeight, user } = useSelector((state: RootState) => state.app)
+  const dispatch = useDispatch()
   const style = {
     height: headerHeight,
     lineHeight: headerHeight + 'px'
@@ -19,6 +20,7 @@ export default function AppHeader() {
   const handleClick = ({ key }) => {
     switch (key) {
       case 'logout':
+        dispatch(logout())
         return navigate('/login', { replace: true })
     }
   }
@@ -44,7 +46,7 @@ export default function AppHeader() {
           <Dropdown overlay={menu}>
             <a className="ra-user-box" onClick={(e) => e.preventDefault()}>
               <img src={UserImg} />
-              <span>Admin</span>
+              <span>{user.username}</span>
             </a>
           </Dropdown>
         </div>

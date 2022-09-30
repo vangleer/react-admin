@@ -1,19 +1,43 @@
 import './index.less'
 import { LockOutlined, UserOutlined } from '@ant-design/icons'
-import { Button, Form, Input } from 'antd'
+import { Button, Form, Input, message } from 'antd'
+import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
+import { login } from '@/store/modules/app'
+import { useDispatch } from 'react-redux'
+import { appConfig } from '@/config'
+type LoginType = {
+  username: string
+  password: string
+}
 export default function Login() {
-  const onFinish = (values: any) => {
-    console.log('Received values of form: ', values)
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
+  const [loading, setLoading] = useState(false)
+
+  const onFinish = (values: LoginType) => {
+    const { username } = values
+    if (username !== 'admin' && username !== 'vangle') {
+      return message.warn('用户名或密码有误！')
+    }
+    setLoading(true)
+    setTimeout(() => {
+      const token = `${username}.${new Date().toString()}`
+      const user = { token, username }
+      dispatch(login(user))
+      setLoading(false)
+      navigate('/home', { replace: true })
+    }, 1000)
   }
   const year = new Date().getFullYear()
   return (
     <div className="ra-login">
       <div className="ra-login-main">
         <div className="ra-login-box">
-          <a className="ra-logo" href="/">
+          <div className="ra-logo">
             <img className="ra-logo-icon" src="/logo.png" />
-            <h1>React Admin</h1>
-          </a>
+            <h1>{appConfig.name}</h1>
+          </div>
           <div className="ra-logo-form">
             <Form
               name="normal_login"
@@ -26,7 +50,7 @@ export default function Login() {
                   name="username"
                   rules={[{ required: true, message: 'Please input your Username!' }]}
                 >
-                  <Input prefix={<UserOutlined />} placeholder="Username" />
+                  <Input prefix={<UserOutlined />} placeholder="用户名: admin or vangle" />
                 </Form.Item>
               </div>
               <div className="ra-login-form-item">
@@ -34,12 +58,12 @@ export default function Login() {
                   name="password"
                   rules={[{ required: true, message: 'Please input your Password!' }]}
                 >
-                  <Input prefix={<LockOutlined />} type="password" placeholder="Password" />
+                  <Input prefix={<LockOutlined />} type="password" placeholder="密码: any" />
                 </Form.Item>
               </div>
               <div className="ra-login-form-item">
                 <Form.Item>
-                  <Button type="primary" htmlType="submit" className="ra-login-form-button">
+                  <Button type="primary" loading={loading} htmlType="submit" className="ra-login-form-button">
                     登 录
                   </Button>
                 </Form.Item>

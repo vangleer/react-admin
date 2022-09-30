@@ -1,3 +1,6 @@
+export const appConfig = {
+  name: 'React Admin'
+}
 export type LayoutModeType = 'top' | 'mix' | 'side'
 export type ColorsType = {
   value: string

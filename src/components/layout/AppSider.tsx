@@ -3,14 +3,13 @@ import { Layout, Button } from 'antd'
 import React from 'react'
 import AppMenu from './AppMenu'
 import { RootState } from '@/store'
-import { useSelector, useDispatch } from 'react-redux'
-import { setAppState } from '@/store/modules/app'
+import { useSelector } from 'react-redux'
+import { usePatch } from '@/store/modules/app'
 import AppLogo from './AppLogo'
 const { Sider } = Layout
 export default function AppSider() {
   const { mode, collapsed, sideWidth, headerHeight } = useSelector((state: RootState) => state.app)
-  const dispatch = useDispatch()
-  const patch = (state) => dispatch(setAppState(state))
+  const patch = usePatch()
 
   return (
     <>
