@@ -1,3 +1,4 @@
+@import '@/assets/css/variables.less';
 .ra-layout {
   height: 100%;
   .ra-layout-header {
@@ -98,11 +99,20 @@
     box-shadow: 0 1px 4px 0 rgb(0 21 41 / 12%);
   }
   .ra-layout-sider {
-    background: #001529;
+    background: @ra-side-bg;
+    
+    .ant-menu.ant-menu-dark {
+      background: @ra-side-bg;
+    }
+    .ant-menu-dark .ant-menu-sub,
+    .ant-menu.ant-menu-dark .ant-menu-sub {
+      background: darken(@ra-side-bg, 2%);
+    }
   }
   .ra-logo {
     padding: 16px;
     transition: all 0.2s;
+    background-color: lighten(@ra-side-bg, 5%);
     h1 {
       color: #fff;
     }
@@ -194,7 +204,7 @@
       left: 0;
     }
     &::after {
-      background-color: #001529;
+      background-color: @ra-side-bg;
       width: 100%;
       height: 25%;
     }
@@ -207,13 +217,13 @@
     }
     &::after {
       z-index: 1;
-      background-color: #001529;
+      background-color: @ra-side-bg;
     }
   }
   .ra-settings-layout-block-side {
     &::before {
       z-index: 1;
-      background-color: #001529;
+      background-color: @ra-side-bg;
       width: 33%;
       height: 100%;
     }
