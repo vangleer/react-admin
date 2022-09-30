@@ -6,6 +6,7 @@ import { useNavigate } from 'react-router-dom'
 import { login } from '@/store/modules/app'
 import { useDispatch } from 'react-redux'
 import { appConfig } from '@/config'
+import logo from '@/assets/images/logo.png'
 type LoginType = {
   username: string
   password: string
@@ -35,7 +36,7 @@ export default function Login() {
       <div className="ra-login-main">
         <div className="ra-login-box">
           <div className="ra-logo">
-            <img className="ra-logo-icon" src="/logo.png" />
+            <img className="ra-logo-icon" src={logo} />
             <h1>{appConfig.name}</h1>
           </div>
           <div className="ra-logo-form">
