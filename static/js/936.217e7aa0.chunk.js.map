@@ -1,0 +1,1 @@
+{"version":3,"file":"static/js/936.217e7aa0.chunk.js","mappings":"yKAAe,SAASA,IACtB,OAAO,gCACR,C","sources":["views/home.tsx"],"sourcesContent":["export default function Home() {\n  return <h2>Home</h2>\n}\n"],"names":["Home"],"sourceRoot":""}
