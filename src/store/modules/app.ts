@@ -9,7 +9,7 @@ export type RoutePathType = {
   label: string
 }
 export type UserType = {
-  username?: string,
+  username?: string
   token?: string
 }
 export interface AppState {
@@ -19,14 +19,13 @@ export interface AppState {
   menuList: any[]
   sideWidth: number
   headerHeight: number
-  routePath: RoutePathType[],
+  routePath: RoutePathType[]
   user: UserType
 }
-const user = JSON.parse(localStorage.getItem('user') || null) as UserType || {
+const user = (JSON.parse(localStorage.getItem('user') || null) as UserType) || {
   username: '',
   token: ''
 }
-
 
 const initialState: Partial<AppState> = {
   mode: layouts[0].value,

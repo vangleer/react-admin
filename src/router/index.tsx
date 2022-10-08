@@ -112,7 +112,7 @@ export const findRoutePath = (pathname): RoutePathType[] => {
     }
   }
   for (let i = 0; i < menuList.length; i++) {
-    let route = menuList[i]
+    const route = menuList[i]
     const flag = findRoute(route.children, route)
     if (flag) return arr
   }

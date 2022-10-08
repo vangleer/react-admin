@@ -19,7 +19,7 @@ function App() {
     }
     const routePath = findRoutePath(location.pathname)
     patch({ routePath })
-    return () => { }
+    return () => {}
   }, [location.pathname])
   return <div className="ra-app">{useRoutes(ruoter)}</div>
 }

@@ -64,7 +64,12 @@ export default function Login() {
               </div>
               <div className="ra-login-form-item">
                 <Form.Item>
-                  <Button type="primary" loading={loading} htmlType="submit" className="ra-login-form-button">
+                  <Button
+                    type="primary"
+                    loading={loading}
+                    htmlType="submit"
+                    className="ra-login-form-button"
+                  >
                     登 录
                   </Button>
                 </Form.Item>
